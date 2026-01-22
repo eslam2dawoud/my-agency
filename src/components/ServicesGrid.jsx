@@ -1,77 +1,72 @@
 "use client";
 import { motion } from "framer-motion";
+import { Megaphone, Sofa, Warehouse, PartyPopper } from "lucide-react";
 
 const services = {
   ar: [
-    { title: "تصميم الهوية", desc: "بنرسم لشركتك شخصية متميزة", icon: "🎨" },
-    { title: "تسويق رقمي", desc: "بنخلي اسمك في كل مكان", icon: "🚀" },
-    { title: "موشن جرافيك", desc: "بنحرك أفكارك ونخليها قصة", icon: "🎬" },
-    { title: "طباعة ودعاية", desc: "جودة خيال وتركيب في أسرع وقت", icon: "🖨️" },
+    {
+      title: "دعاية وإعلان",
+      icon: <Megaphone />,
+      desc: "هويات بصرية وحملات تترك أثراً.",
+    },
+    {
+      title: "أثاث وديكور",
+      icon: <Sofa />,
+      desc: "تصميم داخلي وتنفيذ بلمسة فنية.",
+    },
+    {
+      title: "تنظيم معارض",
+      icon: <Warehouse />,
+      desc: "حلول متكاملة لتجهيز المعارض والمساحات.",
+    },
+    {
+      title: "حفلات ومناسبات",
+      icon: <PartyPopper />,
+      desc: "إدارة المناسبات الرسمية والخاصة باحتراف.",
+    },
   ],
   en: [
     {
-      title: "Branding",
-      desc: "We draw a unique persona for your business",
-      icon: "🎨",
+      title: "Advertising",
+      icon: <Megaphone />,
+      desc: "Identities and campaigns that last.",
     },
     {
-      title: "Digital Marketing",
-      desc: "Making your name everywhere",
-      icon: "🚀",
+      title: "Furniture & Decor",
+      icon: <Sofa />,
+      desc: "Interior design with an artistic touch.",
     },
     {
-      title: "Motion Graphics",
-      desc: "Moving your ideas into stories",
-      icon: "🎬",
+      title: "Exhibitions",
+      icon: <Warehouse />,
+      desc: "Integrated booth and space solutions.",
     },
     {
-      title: "Print & Ads",
-      desc: "Imaginary quality & fastest installation",
-      icon: "🖨️",
+      title: "Events Planning",
+      icon: <PartyPopper />,
+      desc: "Managing grand events professionally.",
     },
   ],
 };
 
 export default function ServicesGrid({ lang }) {
-  const currentServices = services[lang];
-
+  const data = services[lang];
   return (
-    <section className="py-20 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* عنوان القسم مع أنيميشن */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="mb-16 border-r-4 border-blue-600 pr-6"
-        >
-          <h2 className="text-4xl font-black">
-            {lang === "ar" ? "إحنا بنعمل إيه؟" : "What We Do?"}
-          </h2>
-        </motion.div>
-
-        {/* شبكة الأقسام الأربعة */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {currentServices.map((service, index) => (
+    <section id="services" className="py-24 bg-[#0f172a] px-6">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl font-black text-center mb-16 text-white">
+          {lang === "ar" ? "تخصصاتنا" : "Our Specialties"}
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {data.map((s, i) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: index * 0.2,
-                type: "spring",
-                stiffness: 100,
-              }}
-              whileHover={{ scale: 1.05, rotate: 1 }}
-              className="p-8 rounded-3xl bg-gray-50 hover:bg-blue-600 hover:text-white transition-all duration-300 group shadow-sm border border-gray-100"
+              key={i}
+              whileHover={{ y: -10 }}
+              className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-indigo-600/20 transition-all"
             >
-              <div className="text-5xl mb-6 group-hover:scale-125 transition-transform duration-500">
-                {service.icon}
-              </div>
-              <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-              <p className="opacity-70 group-hover:opacity-100 leading-relaxed">
-                {service.desc}
-              </p>
+              <div className="text-indigo-400 mb-6">{s.icon}</div>
+              <h3 className="text-2xl font-bold mb-4 text-white">{s.title}</h3>
+              <p className="text-white/50">{s.desc}</p>
             </motion.div>
           ))}
         </div>

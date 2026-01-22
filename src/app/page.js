@@ -11,25 +11,15 @@ export default function Home() {
   const [lang, setLang] = useState("ar");
 
   return (
-    <main dir={lang === "ar" ? "rtl" : "ltr"} className="min-h-screen bg-white">
+    <main
+      dir={lang === "ar" ? "rtl" : "ltr"}
+      className="min-h-screen bg-[#0f172a]"
+    >
       <Navbar lang={lang} setLang={setLang} />
-
-      <div id="home">
-        <Hero lang={lang} />
-      </div>
-
-      <section id="services">
-        <ServicesGrid lang={lang} />
-      </section>
-
-      <section id="portfolio">
-        <Portfolio lang={lang} />
-      </section>
-
-      <section id="about">
-        <About lang={lang} />
-      </section>
-
+      <Hero lang={lang} />
+      <ServicesGrid lang={lang} />
+      <Portfolio lang={lang} />
+      <About lang={lang} />
       <Footer lang={lang} />
     </main>
   );

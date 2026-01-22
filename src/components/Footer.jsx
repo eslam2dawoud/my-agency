@@ -8,117 +8,69 @@ import {
   MapPin,
 } from "lucide-react";
 
-const footerData = {
-  ar: {
-    about:
-      "نحن نصنع الإبداع ونبني العلامات التجارية التي تترك أثراً لا يُمحى في سوق الدعاية والإعلان.",
-    linksTitle: "روابط سريعة",
-    links: [
-      { name: "الرئيسية", id: "home" },
-      { name: "خدماتنا", id: "services" },
-      { name: "أعمالنا", id: "portfolio" },
-      { name: "من نحن", id: "about" },
-    ],
-    contactTitle: "تواصل معنا",
-    rights: "© 2026 جميع الحقوق محفوظة لشركة الإبداع.",
-  },
-  en: {
-    about:
-      "We craft creativity and build brands that leave an indelible mark in the advertising world.",
-    linksTitle: "Quick Links",
-    links: [
-      { name: "Home", id: "home" },
-      { name: "Services", id: "services" },
-      { name: "Portfolio", id: "portfolio" },
-      { name: "About Us", id: "about" },
-    ],
-    contactTitle: "Contact Us",
-    rights: "© 2026 All rights reserved to Creative Agency.",
-  },
-};
-
 export default function Footer({ lang }) {
-  const t = footerData[lang];
-
   return (
-    <footer className="bg-slate-950 text-slate-400 pt-20 pb-10 px-6">
+    <footer className="bg-slate-950 text-slate-400 pt-20 pb-10 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
-        {/* العمود الأول: نبذة عن الشركة */}
         <div className="space-y-6">
-          <div className="text-3xl font-black text-white">
-            CREATIVE<span className="text-blue-500">.</span>
+          <div className="text-3xl font-black text-white tracking-tighter">
+            الجزيرة<span className="text-indigo-500">.</span>
           </div>
-          <p className="leading-relaxed text-lg">{t.about}</p>
+          <p className="leading-relaxed">
+            {lang === "ar"
+              ? "وكالة رائدة في الابتكار، نجمع بين الدعاية والديكور وتنظيم الفعاليات تحت سقف واحد."
+              : "A leading innovation agency, bringing together advertising, decor, and events under one roof."}
+          </p>
           <div className="flex gap-5">
-            <Facebook className="hover:text-blue-500 cursor-pointer transition-all hover:-translate-y-1" />
-            <Instagram className="hover:text-pink-500 cursor-pointer transition-all hover:-translate-y-1" />
-            <Twitter className="hover:text-blue-400 cursor-pointer transition-all hover:-translate-y-1" />
+            <Facebook className="hover:text-indigo-500 cursor-pointer transition-all" />
+            <Instagram className="hover:text-indigo-500 cursor-pointer transition-all" />
+            <Twitter className="hover:text-indigo-500 cursor-pointer transition-all" />
           </div>
         </div>
 
-        {/* العمود الثاني: الروابط السريعة (تأخذك للأقسام) */}
         <div>
-          <h4 className="text-white font-bold text-xl mb-8 border-b border-white/10 pb-2 inline-block">
-            {t.linksTitle}
+          <h4 className="text-white font-bold text-xl mb-8">
+            {lang === "ar" ? "الروابط" : "Links"}
           </h4>
           <ul className="space-y-4">
-            {t.links.map((link) => (
-              <li key={link.id}>
-                <a
-                  href={`#${link.id}`}
-                  className="hover:text-blue-400 hover:translate-x-2 inline-block transition-all duration-300"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
+            <li>
+              <a href="#home" className="hover:text-indigo-400">
+                الرئيسية
+              </a>
+            </li>
+            <li>
+              <a href="#services" className="hover:text-indigo-400">
+                تخصصاتنا
+              </a>
+            </li>
+            <li>
+              <a href="#portfolio" className="hover:text-indigo-400">
+                أعمالنا
+              </a>
+            </li>
           </ul>
         </div>
 
-        {/* العمود الثالث: معلومات التواصل الفعلي */}
         <div>
-          <h4 className="text-white font-bold text-xl mb-8 border-b border-white/10 pb-2 inline-block">
-            {t.contactTitle}
+          <h4 className="text-white font-bold text-xl mb-8">
+            {lang === "ar" ? "تواصل معنا" : "Contact"}
           </h4>
-          <ul className="space-y-5">
-            <li className="flex items-center gap-4 group">
-              <div className="p-2 bg-white/5 rounded-lg group-hover:bg-blue-600 transition-colors">
-                <Phone
-                  size={20}
-                  className="text-blue-500 group-hover:text-white"
-                />
-              </div>
-              <span dir="ltr" className="text-lg">
-                +20 123 456 789
-              </span>
+          <ul className="space-y-4">
+            <li className="flex items-center gap-3">
+              <Phone size={18} className="text-indigo-500" /> +20 123 456 789
             </li>
-            <li className="flex items-center gap-4 group">
-              <div className="p-2 bg-white/5 rounded-lg group-hover:bg-blue-600 transition-colors">
-                <Mail
-                  size={20}
-                  className="text-blue-500 group-hover:text-white"
-                />
-              </div>
-              <span className="text-lg">info@creative-agency.com</span>
+            <li className="flex items-center gap-3">
+              <Mail size={18} className="text-indigo-500" /> impact@agency.com
             </li>
-            <li className="flex items-center gap-4 group">
-              <div className="p-2 bg-white/5 rounded-lg group-hover:bg-blue-600 transition-colors">
-                <MapPin
-                  size={20}
-                  className="text-blue-500 group-hover:text-white"
-                />
-              </div>
-              <span className="text-lg">
-                {lang === "ar" ? "السعودية" : "Saudi Arabia"}
-              </span>
+            <li className="flex items-center gap-3">
+              <MapPin size={18} className="text-indigo-500" />{" "}
+              {lang === "ar" ? "المملكة العربية السعودية" : "Saudi Arabia"}
             </li>
           </ul>
         </div>
       </div>
-
-      {/* حقوق النشر */}
-      <div className="border-t border-white/5 pt-10 text-center text-sm">
-        <p className="opacity-50">{t.rights}</p>
+      <div className="border-t border-white/5 pt-10 text-center opacity-30 text-sm">
+        © 2026 الجزيرة. جميع الحقوق محفوظة.
       </div>
     </footer>
   );

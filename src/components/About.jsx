@@ -1,85 +1,58 @@
 "use client";
 import { motion } from "framer-motion";
 
-const aboutData = {
-  ar: {
-    title: "قصتنا في سطور",
-    desc: "نحن لسنا مجرد شركة دعاية، نحن شركاء نجاح. بدأنا بشغف التصميم وتطورنا لنقود السوق بحلول مبتكرة تجمع بين الفن والاستراتيجية.",
-    stats: [
-      { label: "عميل سعيد", value: "150+" },
-      { label: "مشروع مكتمل", value: "500+" },
-      { label: "سنة خبرة", value: "10+" },
-    ],
-  },
-  en: {
-    title: "Our Story",
-    desc: "We are not just an advertising agency; we are success partners. We started with a passion for design and evolved to lead the market with innovative solutions.",
-    stats: [
-      { label: "Happy Clients", value: "150+" },
-      { label: "Projects Done", value: "500+" },
-      { label: "Years Experience", value: "10+" },
-    ],
-  },
-};
-
 export default function About({ lang }) {
-  const t = aboutData[lang];
-
   return (
-    <section className="py-24 bg-white px-6">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
-        {/* الصورة (ممكن تحط صورة فريق العمل أو المكتب) */}
+    <section
+      id="about"
+      className="py-24 bg-[#0f172a] px-6 relative overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <motion.div
-          initial={{ opacity: 0, x: lang === "ar" ? 50 : -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          className="w-full md:w-1/2 relative"
+          initial={{ x: -50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
         >
-          <div className="aspect-square bg-blue-600 rounded-3xl rotate-3 absolute inset-0 -z-10 opacity-10"></div>
-          <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800"
-            alt="Team"
-            className="rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
-          />
+          <h2 className="text-4xl md:text-6xl font-black mb-8 text-white leading-tight">
+            {lang === "ar"
+              ? "نحن لا نصنع مشاريع، نحن نصنع تاريخاً"
+              : "We Don't Just Make Projects, We Make History"}
+          </h2>
+          <p className="text-indigo-100/60 text-lg md:text-xl leading-relaxed mb-8">
+            {lang === "ar"
+              ? 'في " الجزيرة"، نؤمن أن كل لمحة بصرية، وكل قطعة أثاث، وكل تفصيلة في حدث ما هي فرصة لترك بصمة خالدة. نحن فريق من المبدعين والمهندسين والمنظمين اجتمعنا لهدف واحد: أن يكون لكل ما نقوم به أثر حقيقي.'
+              : 'At "AlJezeraa", we believe every visual glance, every piece of furniture, and every event detail is an opportunity to leave a lasting mark. We are a team of creators and engineers united by one goal: to create a real impact.'}
+          </p>
+          <div className="grid grid-cols-2 gap-8">
+            <div>
+              <h4 className="text-3xl font-black text-indigo-500 mb-2">150+</h4>
+              <p className="text-white/50">
+                {lang === "ar" ? "مشروع ناجح" : "Successful Projects"}
+              </p>
+            </div>
+            <div>
+              <h4 className="text-3xl font-black text-indigo-500 mb-2">10+</h4>
+              <p className="text-white/50">
+                {lang === "ar" ? "سنوات خبرة" : "Years of Experience"}
+              </p>
+            </div>
+          </div>
         </motion.div>
 
-        {/* النصوص والأرقام */}
-        <div className="w-full md:w-1/2">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl font-black mb-6"
-          >
-            {t.title}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-600 text-lg leading-relaxed mb-10"
-          >
-            {t.desc}
-          </motion.p>
-
-          {/* الإحصائيات (Counter Grid) */}
-          <div className="grid grid-cols-3 gap-4 border-t pt-10">
-            {t.stats.map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-3xl font-black text-blue-600 mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-gray-500 text-sm font-bold">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <div className="aspect-square rounded-[40px] overflow-hidden rotate-3 shadow-2xl border-8 border-white/5">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800"
+              className="w-full h-full object-cover"
+            />
           </div>
-        </div>
+          <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-indigo-600/20 rounded-full blur-3xl animate-pulse" />
+        </motion.div>
       </div>
     </section>
   );

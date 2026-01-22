@@ -5,10 +5,16 @@ html {
 }
 
 body {
-  @apply antialiased text-slate-900;
+  background-color: #0f172a; /* كحلي غامق جداً */
+  color: #ffffff;
+  font-family: sans-serif; /* يفضل استخدام خط Cairo إذا كان متاحاً */
+  @apply antialiased;
 }
 
-/* لمنع ظهور شريط التمرير العرضي أثناء الأنيميشن */
-main {
-  overflow-x: hidden;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #4f46e5;
+  border-radius: 10px;
 }
